@@ -1,12 +1,15 @@
-{% extends 'base.html' %} {% block title %}Home{% endblock title %} {% block body %} 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus labore
-voluptates repellat debitis ratione natus dignissimos cupiditate, ab animi
-accusantium, illum in qui voluptatem dolorum iure praesentium maxime?
-Voluptatibus error voluptatum eligendi rem sequi nemo delectus sint saepe
-ducimus ut fuga quisquam soluta ipsam cumque corrupti enim, quas tempora
-assumenda?
+{% extends 'base.html' %} 
+
+{% block title %}Home{% endblock title %}
+
+{% block body %} 
+    {% load thumbnail %}
+
 {% for post in posts %}
     <h4>{{ post.text }} <hr ></h4>
+    {% thumbnail post.image "200x200" crop="center" as im %}
+    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+{% endthumbnail %}
 {% endfor %}
 
 {% endblock body %}
